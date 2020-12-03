@@ -3,6 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import LocationMarker from './LocationMarker';
 import LocationInfoBox from './LocationInfoBox';
 
+
 const Map = ({eventData, center, zoom}) => {
     const [locationInfo, setLocationInfo] = useState(null)
     const markers = eventData.map((ev, index)  => {
@@ -15,11 +16,12 @@ const Map = ({eventData, center, zoom}) => {
             }
         return null
     })
+    
     return (
         <div className="map">
             <GoogleMapReact
                 bootstrapURLKeys={{ key: 
-                'AIzaSyBqJpBt3JKNMi-Br-1tuZ0h2dObnHyWAtY' }}
+                process.env.REACT_APP_API_KEY }}
                 defaultCenter={ center }
                 defaultZoom={ zoom }
             >
@@ -29,6 +31,7 @@ const Map = ({eventData, center, zoom}) => {
         </div>
     )
 }
+
 
 Map.defaultProps = {
     center: {
